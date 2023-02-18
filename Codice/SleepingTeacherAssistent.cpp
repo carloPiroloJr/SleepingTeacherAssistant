@@ -38,11 +38,6 @@ int main(int argc, char* argv[])
         printf("Utilizzo predefinito (5) studenti. \n");
         numero_di_studenti = 5;
     }
-    /*lse
-   // {
-        printf("Numero di studenti specificato. Creazione di %d thread. \n", numero_di_studenti);
-        numero_di_studenti = atoi(argv[1]);
-    }*/
 
     Studenti = (pthread_t*)malloc(sizeof(pthread_t) * numero_di_studenti);
 
@@ -127,7 +122,6 @@ void* Student_Activity(void* threadID)
         printf("\tLo studente %ld sta ricevendo aiuto dall'AT.\n", (long)threadID);
         sem_wait(&Student_Sem);
         printf("Studente %ld ha lasciato l'aula TA.\n", (long)threadID);
-        pthread_exit(threadID);
         } else {
             printf("Lo studente %ld tornerà in un altro momento.\n", (long)threadID);
    	}
